@@ -32,9 +32,13 @@ app.use(cookieParser(process.env.TOKEN_SECRET)) // token secret for signed cooki
 
 // route modules
 const authRoute = require('./route/authRoute')
+const wooCommerceProductsRoute = require('./route/wooCommerceProductsRoute')
+const wooCommerceOrdersRoute = require('./route/wooCommerceOrdersRoute')
 
 // primary route
 app.use('/api', authRoute)
+app.use('/woocommerce/products', wooCommerceProductsRoute)
+app.use('/woocommerce/orders', wooCommerceOrdersRoute)
 
 // default route
 app.all('*', (req, res) => {
