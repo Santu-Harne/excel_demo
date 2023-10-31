@@ -31,14 +31,15 @@ app.use(cors(
 app.use(cookieParser(process.env.TOKEN_SECRET)) // token secret for signed cookies
 
 // route modules
-const authRoute = require('./route/authRoute')
-const wooCommerceProductsRoute = require('./route/wooCommerceProductsRoute')
-const wooCommerceOrdersRoute = require('./route/wooCommerceOrdersRoute')
+const allRoutes = require('./route/mainRoute')
 
 // primary route
-app.use('/api', authRoute)
-app.use('/woocommerce/products', wooCommerceProductsRoute)
-app.use('/woocommerce/orders', wooCommerceOrdersRoute)
+app.use('/api', allRoutes.authRoute)
+app.use('/woocommerce/products', allRoutes.wooCommerceProductsRoute)
+app.use('/woocommerce/orders', allRoutes.wooCommerceOrdersRoute)
+app.use('/image', allRoutes.imageRoute)
+app.use('/school', allRoutes.schoolRoute)
+app.use('/products', allRoutes.productRoute)
 
 // default route
 app.all('*', (req, res) => {

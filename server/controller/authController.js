@@ -22,17 +22,18 @@ const authController = {
 
 			// Parse the Excel sheet
 			const excelData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
+			res.json(excelData)
 			const query = 'INSERT INTO students_table SET ?';
 
-			excelData.forEach((student) => {
-				db.query(query, student, (err, result) => {
-					if (err) {
-						console.error('Error inserting data:', err);
-					}
-				})
-			})
+			// excelData.forEach((student) => {
+			// 	db.query(query, student, (err, result) => {
+			// 		if (err) {
+			// 			console.error('Error inserting data:', err);
+			// 		}
+			// 	})
+			// })
 
-			res.status(StatusCodes.OK).json({ msg: 'students_data added successfully' })
+			// res.status(StatusCodes.OK).json({ msg: 'students_data added successfully' })
 
 		} catch (error) {
 			return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: error.message })

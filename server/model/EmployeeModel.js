@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const connect = mongoose.connect(process.env.EMPLOYEES_MONGO_URL)
   .then(response => console.log('Employees database connected successfully'))
+  .catch(err => console.log('Error connecting to database'))
 
 
 const EmployeeSchema = new mongoose.Schema({

@@ -21,9 +21,17 @@ const data = [
     bottom_width: "",
     top_size: "",
     bottom_size: "",
+    image: [
+      {
+        src: 'hello'
+      },
+      {
+        src: 'dear'
+      }
+    ]
   },
 ];
-const fileName = "tableData";
+const fileName = "data sheet";
 const DownloadExcel = () => {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -38,8 +46,8 @@ const DownloadExcel = () => {
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-    XLSX.writeFile(wb, `${fileName}.xlsx`);
-    setOpen(false);
+    // XLSX.writeFile(wb, `${fileName}.xlsx`);
+    // setOpen(false);
   };
   return (
     <div>
